@@ -1,0 +1,65 @@
+{
+	"info": {
+		"_postman_id": "5606eb39-a1a5-4bfa-bc59-1a43813141ad",
+		"name": "New Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21814099"
+	},
+	"item": [
+		{
+			"name": "Ampliance",
+			"item": [
+				{
+					"name": "https://api.github.com/users/6wl",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Check variables\", function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(\"Gregory Loscombe\");\r",
+									"    pm.expect(jsonData.id).to.eql(15330);\r",
+									"    pm.expect(jsonData.location).to.eql(\"Manchester\");\r",
+									"    pm.expect(jsonData.public_repos).to.eql(7);\r",
+									"    pm.expect(jsonData.public_gists).to.eql(11);\r",
+									"    pm.expect(jsonData.followers).to.eql(12);\r",
+									"    pm.expect(jsonData.following).to.eql(29);\r",
+									"});\r",
+									"pm.sendRequest(\"https://api.github.com/users/6wl/followers\", function (err, response) {\r",
+									"    console.log(response.json());\r",
+									"});\r",
+									"pm.test(\"Successful POST request\", function () {\r",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 202]);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.github.com/users/6wl",
+							"protocol": "https",
+							"host": [
+								"api",
+								"github",
+								"com"
+							],
+							"path": [
+								"users",
+								"6wl"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
